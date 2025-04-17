@@ -5,47 +5,47 @@
 int main() {
     std::string url;
 
-    // Altera o título da janela do terminal
+    // Altera o tÃ­tulo da janela do terminal
     std::system("title MP3 Download");
 
-    // Aqui irá sua URL desejada para download (YouTube).
+    // Aqui irÃ¡ sua URL desejada para download (YouTube).
     std::cout << "Insira a URL: ";
     std::getline(std::cin, url);
 
-    // IF ELSE padrão
+    // IF ELSE padrÃ£o
     if (url.empty()) {
-        std::cout << "URL inválida.\n";
+        std::cout << "URL invÃ¡lida.\n";
         return 1;
     }
 
-    // Caminhos relativos para os executáveis yt-dlp e ffmpeg (na pasta libs)
-    std::string yt_dlp_path = ".\\libs\\yt-dlp.exe";  // Caminho para o yt-dlp
-    std::string ffmpeg_path = ".\\libs\\ffmpeg.exe";  // Caminho para o ffmpeg (caso precise)
+    // DiretÃ³rio das dependÃªncias.
+    std::string yt_dlp_path = ".\\libs\\yt-dlp.exe";
+    std::string ffmpeg_path = ".\\libs\\ffmpeg.exe";
 
-    // Comando para extrair o áudio da URL e salvar na pasta mp3
+    // Comando para extrair o Ã¡udio da URL e salvar na pasta mp3
     std::string comando = yt_dlp_path + " -f bestaudio --extract-audio --audio-format mp3 --audio-quality 0 --ffmpeg-location "
                           + ffmpeg_path + " --paths .\\mp3 \"" + url + "\"";
 
-    std::cout << "Processando e baixando o áudio...\n";
+    std::cout << "Processando e baixando o Ã¡udio...\n";
 
-    // Execução do comando
+    // ExecuÃ§Ã£o do comando
     int resultado = std::system(comando.c_str());
 
-    //Somente caso dê erro possa ler.
+    //Somente caso dÃª erro possa ler.
     std::system("pause");
 
-    // PADRÃO
+    // PADRÃƒO
     if (resultado == 0) {
-        std::cout << "CONCLUIDO! Verifique o diretório.\n";
+        std::cout << "CONCLUIDO! Verifique o diretÃ³rio.\n";
     } else {
-        std::cout << "ERRO! Não foi possível baixar o arquivo, tente novamente.\n";
+        std::cout << "ERRO! NÃ£o foi possÃ­vel baixar o arquivo, tente novamente.\n";
     }
 
     return 0;
 }
 
 //@eduzp//
-//lembrando é necessário o uso do yt-dlp e ffmpeg, inclusos no projeto. Não mude o diretório dos arquivos.
-//Se for atrás você consegue fazer em Python, ele possuí biblioteca do ffmpeg e yt-dlp integradas que fazem o processo automático.
-//Futuramente talvez mude pra C# e adicione GUI neste código.
-//Talvez adicione multifunções como mp4 e o download de outras plataformas(sociais).
+//lembrando Ã© necessÃ¡rio o uso do yt-dlp e ffmpeg, inclusos no projeto. NÃ£o mude o diretÃ³rio dos arquivos.
+//Se for atrÃ¡s vocÃª consegue fazer em Python, ele possuÃ­ biblioteca do ffmpeg e yt-dlp integradas que fazem o processo automÃ¡tico.
+//Futuramente talvez mude pra C# e adicione GUI neste cÃ³digo.
+//Talvez adicione multifunÃ§Ãµes como mp4 e o download de outras plataformas(sociais).
